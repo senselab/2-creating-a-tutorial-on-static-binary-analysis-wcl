@@ -23,36 +23,81 @@ In the tutorial, you should give examples showing
 
 
 
-## Task 1: Creation of YARA rules to look for files containing specific strings
-
-### Environment
+## Environment
 
 - Windows 10 x64 1909
+- Oracle JDK 11.0.6
 
-### Goal
 
-1. Find URL in executable file.
-2. Find "expired" string in executable file.
 
-### Step
+## Slides
 
-1. Download yara binary from GitHub Release Page: https://github.com/VirusTotal/yara/releases and unzip it.
+Slides are located in folder "slides".
 
-2. Change working directory to ```bin```
 
-3. Execute ```yara64.exe -s ..\01_find_url.yar ..\target``` to show urls in executable files in target folder.
 
-   ![](https://i.imgur.com/nvnho4A.png)
+## Files used in examples
 
-4. Execute ```yara64.exe -s ..\02_find_expire.yar ..\target``` to show which string contains "expired" in executable files in target folder.
+### YARA
 
-   ![](https://i.imgur.com/v9FfWQ3.png)
+I created rules that can find urls and keyword: "expired" via RegExp in program.
 
-   As you can see, strings are store in UTF-16LE format. Just replace \x00 in string make it readable.
+For more details, see slides/01_yara.pdf
 
-   For first matched string, it is "OnCreate PrivateExpiryDateCheck spacedesk VIEWER BETA has expired".
+```
+│   01_find_expire.yar
+│   01_find_url.yar
+│
+├───bin
+│       yara64.exe
+│       yarac64.exe
+│
+├───slides
+│       01_yara.pdf
+│
+└───target
+        spacedeskWindowsVIEWER.exe
+```
 
-### Reference
 
-1. https://yara.readthedocs.io/en/v3.11.0/writingrules.html
-2. 
+
+### Ghidra
+
+I found target program: "spacedeskWindowsVIEWER.exe" how does check the trial period.
+
+For more details, see  slides/02_Ghidra.pdf
+
+```
+├───slides
+│       02_Ghidra.pdf
+│
+└───target
+        spacedeskWindowsVIEWER.exe
+```
+
+
+
+### BinDiff
+
+In this part, it show how to compile binexport plugin for Ghidra, and compare two programs to see where are the difference the program implemented.
+
+In last, we compare a program with static linked and others DLL library, to verify if that program used that library.
+
+For more details, see  slides/03_BinExport.pdf
+
+I provided files that binexport exported, for copyright issues, I didn't upload exe file.
+
+```
+├───03_diff_src
+│       a.BinExport
+│       a.c
+│       a.exe
+│       b.BinExport
+│       b.c
+│       b.exe
+│       Bin_Export_lib_check.7z
+│
+├───slides
+│       03_BinExport.pdf
+```
+
