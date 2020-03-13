@@ -42,7 +42,7 @@ Slides are located in folder "slides".
 
 I created rules that can find urls and keyword: "expired" via RegExp in program.
 
-For more details, see slides/01_yara.pdf
+For more details, see slides/01_YARA.pdf
 
 ```
 │   01_find_expire.yar
@@ -53,7 +53,7 @@ For more details, see slides/01_yara.pdf
 │       yarac64.exe
 │
 ├───slides
-│       01_yara.pdf
+│       01_YARA.pdf
 │
 └───target
         spacedeskWindowsVIEWER.exe
@@ -98,6 +98,6 @@ I provided files that binexport exported, for copyright issues, I didn't upload 
 │       Bin_Export_lib_check.7z
 │
 ├───slides
-│       03_BinExport.pdf
+│       03_BinDiff.pdf
 ```
 
